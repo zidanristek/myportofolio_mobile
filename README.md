@@ -1,16 +1,29 @@
 # myportofolio_mobile
 
-A new Flutter project.
+Nama : Muhammad Sultan Zidan
+NPM : 2506534876
+Kelas : PBP E
 
-## Getting Started
+Aplikasi mobile untuk [myportofolio](https://github.com/zidanristek/myportofolio), dibuat dengan Flutter untuk mata kuliah PBP (CSGE602022) Gasal 2026/2027.
 
-This project is a starting point for a Flutter application.
+## Setup
 
-A few resources to get you started if this is your first Flutter project:
+Butuh Flutter 3.38 atau lebih baru.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```bash
+git clone https://github.com/zidanristek/myportofolio_mobile.git
+cd myportofolio_mobile
+flutter pub get
+flutter run -d chrome
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Cek kode dengan `flutter analyze`.
+
+## Progres
+
+| Minggu | Pekerjaan |
+|---|---|
+| Tutorial 08 | Halaman utama di `lib/menu.dart`: `InfoCard` identitas dan grid `ItemCard` dengan SnackBar |
+
+## AI Disclosure
+
