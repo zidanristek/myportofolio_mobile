@@ -30,8 +30,8 @@ class MyHomePage extends StatelessWidget {
         ),
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
-      // Body halaman utama dengan padding di sekelilingnya.
-      body: Padding(
+      // Body bisa di-scroll supaya kisi tidak terpotong di layar pendek.
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -65,7 +65,9 @@ class MyHomePage extends StatelessWidget {
 
                   // GridView menampilkan kartu tombol dalam tata letak kisi 3 kolom.
                   GridView.count(
-                    primary: true,
+                    // Scroll ditangani halaman, bukan kisi.
+                    primary: false,
+                    physics: const NeverScrollableScrollPhysics(),
                     padding: const EdgeInsets.all(20),
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,
