@@ -133,6 +133,37 @@ class ItemCard extends StatelessWidget {
 
   const ItemCard(this.item, {super.key});
 
+  // Menampilkan SnackBar dengan pesan interaktif.
+  void _showPressed(BuildContext context) {
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(
+        SnackBar(content: Text("Kamu telah menekan tombol ${item.name}!")),
+      );
+  }
+
+  // Logout tidak bisa dibatalkan, jadi pengguna diminta konfirmasi dulu.
+  Future<bool> _confirmLogout(BuildContext context) async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: const Text('Logout'),
+        content: const Text('Yakin ingin keluar dari MyPortfolio?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(dialogContext, false),
+            child: const Text('Batal'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(dialogContext, true),
+            child: const Text('Logout'),
+          ),
+        ],
+      ),
+    );
+    return confirmed ?? false;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -141,13 +172,11 @@ class ItemCard extends StatelessWidget {
       borderRadius: BorderRadius.circular(12),
       child: InkWell(
         // Aksi ketika kartu ditekan oleh pengguna.
-        onTap: () {
-          // Menampilkan SnackBar dengan pesan interaktif.
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              SnackBar(content: Text("Kamu telah menekan tombol ${item.name}!")),
-            );
+        onTap: () async {
+          if (item.name == "Logout" && !await _confirmLogout(context)) {
+            return;
+          }
+          if (context.mounted) _showPressed(context);
         },
         child: Container(
           padding: const EdgeInsets.all(8),
