@@ -17,13 +17,26 @@ flutter pub get
 flutter run -d chrome
 ```
 
-Cek kode dengan `flutter analyze`.
+Cek kode dengan `flutter analyze` dan jalankan tes dengan `flutter test`.
 
 ## Progres
 
 | Minggu | Pekerjaan |
 |---|---|
 | Tutorial 08 | Halaman utama di `lib/menu.dart`: `InfoCard` identitas dan grid `ItemCard` dengan SnackBar |
+| Tugas 7 | Identitas sendiri, 4 tombol (Lihat Proyek, Lihat Experience, Tambah Proyek, Logout) dengan warna dari palet web, konfirmasi Logout, halaman bisa di-scroll, dan tes widget |
+
+## Pertanyaan Reflektif
+
+### Tugas 7
+
+1. [..............]
+2. [..............]
+3. [..............]
+4. [..............]
+5. [..............]
+6. [..............]
 
 ## AI Disclosure
 
+[..............]
