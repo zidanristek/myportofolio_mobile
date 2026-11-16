@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+/// Halaman utama MyPortfolio: identitas pemilik di atas, tombol aksi di bawah.
+///
+/// Stateless karena semua isinya tetap; tidak ada data yang berubah saat
+/// aplikasi berjalan.
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
 
@@ -88,9 +92,15 @@ class MyHomePage extends StatelessWidget {
   }
 }
 
+/// Kartu kecil berisi satu data identitas, misalnya NPM atau kelas.
+///
+/// Lebarnya sepertiga lebih sedikit dari layar supaya tiga kartu muat
+/// dalam satu [Row].
 class InfoCard extends StatelessWidget {
-  // Kartu informasi yang menampilkan judul (title) dan isi (content).
+  /// Label tebal di atas kartu, misalnya `'NPM'`.
   final String title;
+
+  /// Nilai yang ditampilkan di bawah [title].
   final String content;
 
   const InfoCard({super.key, required this.title, required this.content});
@@ -120,15 +130,29 @@ class InfoCard extends StatelessWidget {
   }
 }
 
+/// Data satu tombol aksi di halaman utama.
+///
+/// Warna disimpan di sini agar [ItemCard] tidak perlu mencocokkan nama
+/// tombol untuk memilih warna.
 class ItemHomepage {
+  /// Teks tombol, juga dipakai di pesan SnackBar.
   final String name;
+
+  /// Ikon yang tampil di atas [name].
   final IconData icon;
+
+  /// Warna latar kartu.
   final Color color;
 
   ItemHomepage(this.name, this.icon, this.color);
 }
 
+/// Kartu tombol yang menampilkan satu [ItemHomepage].
+///
+/// Saat ditekan, kartu memunculkan SnackBar berisi nama tombol. Khusus
+/// Logout, pengguna diminta konfirmasi lewat dialog lebih dulu.
 class ItemCard extends StatelessWidget {
+  /// Data tombol yang ditampilkan.
   final ItemHomepage item;
 
   const ItemCard(this.item, {super.key});
