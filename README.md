@@ -30,12 +30,12 @@ Cek kode dengan `flutter analyze` dan jalankan tes dengan `flutter test`.
 
 ### Tugas 7
 
-1. [..............]
-2. [..............]
-3. [..............]
-4. [..............]
-5. [..............]
-6. [..............]
+1. Widget tree itu widget yang nested di dalam widget lain, jadi parent ngasih constraint ke child-nya lalu child nentuin size sendiri dan parent yang ngatur posisinya.
+2. Aku pakai `MaterialApp` sebagai root dan `Scaffold` + `AppBar` buat struktur halaman, terus layout pakai `SingleChildScrollView`/`Padding`/`Column`/`Row`/`Center`/`SizedBox`/`Container`/`GridView.count`, isi kartu pakai `Card`/`Material`/`InkWell`/`Text`/`Icon`, feedback pakai `SnackBar` dan `AlertDialog`, plus custom widget `MyHomePage`/`InfoCard`/`ItemCard`.
+3. `MaterialApp` udah nyediain theme, `Navigator`, dan `MediaQuery` buat semua widget di bawahnya, makanya jadi root karena tanpa itu `Scaffold` bakal error "No MediaQuery widget ancestor found".
+4. `StatelessWidget` propertinya immutable jadi nggak bisa rebuild sendiri, sedangkan `StatefulWidget` punya state yang bisa diubah lewat `setState`, jadi Stateless cocok buat halaman statis kayak menu ini dan Stateful buat data yang berubah kayak form atau counter.
+5. `BuildContext` itu lokasi widget di tree yang dipakai buat ngakses widget di atasnya, contohnya `Theme.of(context)` dan `ScaffoldMessenger.of(context)` di method `build`.
+6. Hot reload ngerebuild widget tree tanpa ngilangin state sedangkan hot restart ngulang app dari awal sampai state hilang, jadi kalau ngubah `main()` atau `initState()` harus hot restart dan kalau ngubah `pubspec.yaml` atau kode native harus full restart.
 
 ## AI Disclosure
 
