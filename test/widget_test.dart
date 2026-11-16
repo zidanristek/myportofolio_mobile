@@ -1,30 +1,59 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
 import 'package:myportofolio_mobile/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
+  testWidgets('shows owner identity', (tester) async {
     await tester.pumpWidget(const MyApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    expect(find.text('2506534876'), findsOneWidget);
+    expect(find.text('Muhammad Sultan Zidan'), findsOneWidget);
+    expect(find.text('PBP E'), findsOneWidget);
+  });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+  testWidgets('every action card has its own color', (tester) async {
+    await tester.pumpWidget(const MyApp());
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    final colors = tester
+        .widgetList<Material>(find.descendant(
+          of: find.byType(GridView),
+          matching: find.byType(Material),
+        ))
+        .map((m) => m.color)
+        .toList();
+
+    expect(colors.length, 4);
+    expect(colors.toSet().length, colors.length);
+  });
+
+  testWidgets('tapping a card shows its name in a SnackBar', (tester) async {
+    await tester.pumpWidget(const MyApp());
+
+    await tester.tap(find.text('Lihat Proyek'));
+    await tester.pumpAndSettle();
+
+    expect(find.byType(AlertDialog), findsNothing);
+    expect(find.text('Kamu telah menekan tombol Lihat Proyek!'), findsOneWidget);
+  });
+
+  testWidgets('logout waits for confirmation', (tester) async {
+    await tester.pumpWidget(const MyApp());
+    final logoutCard = find.text('Logout');
+    await tester.ensureVisible(logoutCard);
+    await tester.pumpAndSettle();
+
+    await tester.tap(logoutCard);
+    await tester.pumpAndSettle();
+    expect(find.byType(AlertDialog), findsOneWidget);
+
+    await tester.tap(find.text('Batal'));
+    await tester.pumpAndSettle();
+    expect(find.text('Kamu telah menekan tombol Logout!'), findsNothing);
+
+    await tester.tap(logoutCard);
+    await tester.pumpAndSettle();
+    await tester.tap(find.widgetWithText(TextButton, 'Logout'));
+    await tester.pumpAndSettle();
+    expect(find.text('Kamu telah menekan tombol Logout!'), findsOneWidget);
   });
 }
