@@ -1,4 +1,5 @@
 import 'package:material_ui/material_ui.dart';
+import 'package:myportofolio_mobile/widgets/left_drawer.dart';
 
 /// Halaman utama MyPortfolio: identitas pemilik di atas, tombol aksi di bawah.
 ///
@@ -33,7 +34,10 @@ class MyHomePage extends StatelessWidget {
           ),
         ),
         backgroundColor: Theme.of(context).colorScheme.primary,
+        // Ikon hamburger drawer ikut putih agar terbaca di AppBar indigo.
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
+      drawer: const LeftDrawer(),
       // Body bisa di-scroll supaya kisi tidak terpotong di layar pendek.
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
