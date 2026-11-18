@@ -25,6 +25,7 @@ Cek kode dengan `flutter analyze` dan jalankan tes dengan `flutter test`.
 |---|---|
 | Tutorial 08 | Halaman utama di `lib/menu.dart`: `InfoCard` identitas dan grid `ItemCard` dengan SnackBar |
 | Tugas 7 | Identitas sendiri, 4 tombol (Lihat Proyek, Lihat Experience, Tambah Proyek, Logout) dengan warna dari palet web, konfirmasi Logout, halaman bisa di-scroll, dan tes widget |
+| Tutorial 09 | Import `material_ui`, `LeftDrawer` (Home, Add Project), `ProjectFormPage` dengan validasi dan dialog data, kartu Tambah Proyek membuka form, struktur `screens/` dan `widgets/` |
 
 ## Pertanyaan Reflektif
 
