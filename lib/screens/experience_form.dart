@@ -73,6 +73,9 @@ class ExperienceFormPage extends StatefulWidget {
 
 class _ExperienceFormPageState extends State<ExperienceFormPage> {
   final _formKey = GlobalKey<FormState>();
+  final _titleController = TextEditingController();
+  final _descriptionController = TextEditingController();
+  final _thumbnailController = TextEditingController();
   final _startController = TextEditingController();
   final _endController = TextEditingController();
 
@@ -83,6 +86,9 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
 
   @override
   void dispose() {
+    _titleController.dispose();
+    _descriptionController.dispose();
+    _thumbnailController.dispose();
     _startController.dispose();
     _endController.dispose();
     super.dispose();
@@ -116,8 +122,52 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
     );
   }
 
+  /// Dialog hanya muncul kalau semua input lolos validasi.
   void _save() {
-    _formKey.currentState!.validate();
+    if (!_formKey.currentState!.validate()) return;
+    final thumbnail = _thumbnailController.text.trim();
+    final rows = {
+      'Judul': _titleController.text.trim(),
+      'Deskripsi': _descriptionController.text.trim(),
+      'Kategori': experienceCategories[_category]!,
+      'Thumbnail': thumbnail.isEmpty ? '-' : thumbnail,
+      'Mulai': formatDate(_startedAt!),
+      'Selesai': _ongoing ? 'Masih berjalan' : formatDate(_endedAt!),
+    };
+    showDialog(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: const Text('Experience berhasil disimpan!'),
+        content: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              for (final MapEntry(:key, :value) in rows.entries)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 8.0),
+                  child: Text.rich(
+                    TextSpan(
+                      children: [
+                        TextSpan(
+                          text: '$key: ',
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        TextSpan(text: value),
+                      ],
+                    ),
+                  ),
+                ),
+            ],
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(dialogContext),
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -142,6 +192,7 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  controller: _titleController,
                   maxLength: titleMaxLength,
                   decoration: _decoration(
                     'Judul Experience',
@@ -155,6 +206,7 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  controller: _descriptionController,
                   maxLines: 5,
                   keyboardType: TextInputType.multiline,
                   decoration: _decoration('Deskripsi'),
@@ -184,6 +236,7 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  controller: _thumbnailController,
                   keyboardType: TextInputType.url,
                   decoration: _decoration(
                     'Thumbnail (opsional)',
