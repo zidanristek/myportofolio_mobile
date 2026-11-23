@@ -23,7 +23,7 @@ void main() {
         .map((m) => m.color)
         .toList();
 
-    expect(colors.length, 4);
+    expect(colors.length, 5);
     expect(colors.toSet().length, colors.length);
   });
 

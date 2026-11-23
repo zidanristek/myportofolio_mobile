@@ -18,6 +18,11 @@ class MyHomePage extends StatelessWidget {
     ItemHomepage("Lihat Proyek", Icons.folder, const Color(0xFF0968BF)),
     ItemHomepage("Lihat Experience", Icons.work, const Color(0xFF00A551)),
     ItemHomepage("Tambah Proyek", Icons.add_circle, const Color(0xFF022347)),
+    ItemHomepage(
+      "Tambah Experience",
+      Icons.work_history,
+      const Color(0xFF0E7B45),
+    ),
     ItemHomepage("Logout", Icons.logout, const Color(0xFFBA2121)),
   ];
 
