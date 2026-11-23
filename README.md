@@ -41,10 +41,10 @@ Cek kode dengan `flutter analyze` dan jalankan tes dengan `flutter test`.
 
 ### Tugas 8
 
-1. //TODO
-2. //TODO
-3. //TODO
-4. //TODO
+1. `push()` nambahin route baru ke atas stack jadi bisa back ke halaman sebelumnya, `pushReplacement()` replace route sekarang dengan route baru, dan `pop()` remove route paling atas dari stack, jadi card Tambah Experience pakai `push()` sedangkan Home di drawer pakai `pushReplacement()` ke `MyHomePage` biar stack-nya nggak terus bertambah.
+2. Semua page pakai `Scaffold` dengan `AppBar` di atas dan `LeftDrawer` yang sama, jadi layout tiap page konsisten, contohnya warna indigo dipakai di `AppBar` project form, experience form, dan header drawer.
+3. Form-nya pakai layout satu kolom biar gampang diisi berurutan di mobile, `Padding` ngasih spacing antar input, dan `SingleChildScrollView` bikin form scrollable jadi button Simpan tetap reachable waktu screen sempit atau keyboard muncul.
+4. `GlobalKey<FormState>` dipakai buat manggil `validate()` yang ngejalanin semua `validator` dan nampilin error message di field yang invalid, contohnya thumbnail `example.com/a.png` di-reject karena nggak diawali `http://` atau `https://`, dan `TextInputType.url` aja nggak cukup karena itu cuma ngubah layout keyboard, user tetap bisa ketik atau paste input apa aja.
 
 ## AI Disclosure
 
