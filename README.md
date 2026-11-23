@@ -48,6 +48,8 @@ Cek kode dengan `flutter analyze` dan jalankan tes dengan `flutter test`.
 
 ## AI Disclosure
 
+### Tugas 7
+
 Mostly kebanyakan masih ngikutin tutorial, ngelihat tutorial youtube terkait flutter, terus coba implemence. Penggunaan AI mostly disini buat ngemandu ketika ada yg error dan ngerubah kode agar penamaan variable lebih baik, kode lebih rapih, dan dokumentasi. Karena saya masih belajar standard prinsiple di Flutter jadi lebih baik jika saya menanyakan hal tersebut ke AI based on riset yang saya temukan
 
 ### Tugas 8
