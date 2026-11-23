@@ -54,4 +54,4 @@ Mostly kebanyakan masih ngikutin tutorial, ngelihat tutorial youtube terkait flu
 
 ### Tugas 8
 
-//TODO
+Pakai Claude buat bantu ngeplan dari checklist tugas agar memenuhi 100% rubrik penilaian, ngebantu ngenulis `ExperienceFormPage` yang fieldnya di fetch  dari model `Experience` di web, dan bantu ngenulis tes widget. Kekurangannya kelihatan pas AI-nya malah minta saya reskontruksi semua file dan ujung-ujungnya banyak yg error akibat overthinking itu, jadi harus aku cek dan benerin di commit `style: normalize line endings to lf`, terus first test juga gagal karena card kelima ada di outside layar dan finder teksnya agak aneh, jadi tetap harus dicek manual lewat `flutter test` dan dijalanin langsung di Chrome.
